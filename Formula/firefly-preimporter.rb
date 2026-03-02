@@ -2,11 +2,11 @@ class FireflyPreimporter < Formula
   include Language::Python::Virtualenv
 
   desc "Transaction statement preprocessor for Firefly III / FiDI"
-  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.4.3/firefly_preimporter-0.4.3.tar.gz"
-  sha256 "a2c8dd9c3d0bfdd6f7281a8d94d960ff805dec8567e017ea1b3c9cd143784cae"
-  version "0.4.3"
+  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.0/firefly_preimporter-0.5.0.tar.gz"
+  sha256 "70b2f66dc7d70f7a51d0838280855edb890a5c9e2cc2781c730bdd4d66d419ae"
+  version "0.5.0"
 
-  depends_on "python@3.11"
+  depends_on "python@3.13"
 
   # --- begin generated resources ---
   resource "certifi" do
