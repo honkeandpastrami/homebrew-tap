@@ -1,15 +1,17 @@
 class FireflyPreimporter < Formula
   desc "Transaction statement preprocessor for Firefly III / FiDI"
-  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.9/firefly_preimporter-0.5.9.tar.gz"
-  sha256 "ff255f9bd3f2cd335e325a2c8ad18c2f33fdaee5d1629740925752f099969c09"
-  version "0.5.9"
+  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.10/firefly_preimporter-0.5.10.tar.gz"
+  sha256 "3d0069439810ed133c666239893cfa193dd7d345a52d8c0acb690f9f84e9d014"
+  version "0.5.10"
 
   depends_on "python@3.13"
+  depends_on "rust" => :build
   depends_on "uv"
 
   def install
     ENV["UV_PROJECT_ENVIRONMENT"] = libexec.to_s
     system "uv", "sync", "--frozen", "--no-dev", "--no-editable",
+           "--no-binary", "jiter",
            "--python", Formula["python@3.13"].opt_bin/"python3.13"
     bin.install_symlink (libexec/"bin").children.select(&:file?).reject { |f|
       f.basename.to_s.start_with?("python")
