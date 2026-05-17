@@ -1,8 +1,8 @@
 class FireflyPreimporter < Formula
   desc "Transaction statement preprocessor for Firefly III / FiDI"
-  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.11/firefly_preimporter-0.5.11.tar.gz"
-  sha256 "99acbe7db1f55d2af4a0e76cff1950fd683350835cb253e8d574f9fed461e5d6"
-  version "0.5.11"
+  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.12/firefly_preimporter-0.5.12.tar.gz"
+  sha256 "03c7a30dab90d7acfe4db28cb59f4cd7d3f5e9a4a949bc78f16c6afb2d6515c1"
+  version "0.5.12"
 
   depends_on "python@3.13"
   depends_on "uv"
@@ -11,6 +11,16 @@ class FireflyPreimporter < Formula
     ENV["UV_PROJECT_ENVIRONMENT"] = libexec.to_s
     system "uv", "sync", "--frozen", "--no-dev", "--no-editable",
            "--python", Formula["python@3.13"].opt_bin/"python3.13"
+    # jiter's pre-built wheel uses @rpath in its Mach-O dylib ID, which
+    # Homebrew tries to rewrite to an absolute path but fails because the
+    # header has no padding room. Shortening to a bare name stops Homebrew
+    # from attempting the rewrite; Python loads .so files by explicit path
+    # so the dylib ID is unused at runtime.
+    jiter_so = Pathname.glob(libexec/"lib/python3.*/site-packages/jiter/jiter*.so").first
+    if jiter_so&.exist?
+      system "install_name_tool", "-id", "jiter.so", jiter_so.to_s
+      system "codesign", "--force", "--sign", "-", jiter_so.to_s
+    end
     bin.install_symlink (libexec/"bin").children.select(&:file?).reject { |f|
       f.basename.to_s.start_with?("python")
     }
