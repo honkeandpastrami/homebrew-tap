@@ -1,8 +1,8 @@
 class FireflyPreimporter < Formula
   desc "Transaction statement preprocessor for Firefly III / FiDI"
-  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.12/firefly_preimporter-0.5.12.tar.gz"
-  sha256 "03c7a30dab90d7acfe4db28cb59f4cd7d3f5e9a4a949bc78f16c6afb2d6515c1"
-  version "0.5.12"
+  url "https://github.com/hgonzale/firefly-preimporter/releases/download/v0.5.13/firefly_preimporter-0.5.13.tar.gz"
+  sha256 "a1f1a3230e310793ffa091819ce807933aa4773af9a48196cd9223ba91b0583e"
+  version "0.5.13"
 
   depends_on "python@3.13"
   depends_on "uv"
