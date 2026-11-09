@@ -1,13 +1,13 @@
-# The CLI's Homebrew formula. deploy/exchequer-cli-formula fills in 1.10.2,
-# https://github.com/honkeandpastrami/exchequer/releases/download/v1.10.2/exchequer-python-1.10.2.tar.gz and 938cf1e3ee5264b8c0b9072da9dc26d7116abef0832d3b477228444ec985e52e; each release commits the result to
+# The CLI's Homebrew formula. deploy/exchequer-cli-formula fills in 1.11.0,
+# https://github.com/honkeandpastrami/exchequer/releases/download/v1.11.0/exchequer-python-1.11.0.tar.gz and 1f4d57200d7b29448e59e188645d833b461a479be47dab13cbf6738f4768e1f0; each release commits the result to
 # honkeandpastrami/homebrew-tap (docs/deployment.md). The tarball is the
 # release's Python workspace (deploy/build-python-source).
 class ExchequerCli < Formula
   desc "Command-line client for Exchequer, a household ledger"
   homepage "https://github.com/honkeandpastrami/exchequer"
-  url "https://github.com/honkeandpastrami/exchequer/releases/download/v1.10.2/exchequer-python-1.10.2.tar.gz"
-  version "1.10.2"
-  sha256 "938cf1e3ee5264b8c0b9072da9dc26d7116abef0832d3b477228444ec985e52e"
+  url "https://github.com/honkeandpastrami/exchequer/releases/download/v1.11.0/exchequer-python-1.11.0.tar.gz"
+  version "1.11.0"
+  sha256 "1f4d57200d7b29448e59e188645d833b461a479be47dab13cbf6738f4768e1f0"
   license "BSD-2-Clause"
 
   depends_on "uv" => :build
